@@ -4,9 +4,11 @@
   "version": "0.0.2",
   "description": "AI-powered bilingual metadata generator for Arab Stock contributors with OpenAI & Gemini integration",
   "permissions": [
+    "contextMenus",
     "storage",
-    "activeTab",
-    "scripting"
+    "notifications",
+    "scripting",
+    "tabs"
   ],
   "host_permissions": [
     "https://contributor.arabsstock.com/*",
