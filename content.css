@@ -1,0 +1,317 @@
+/* Arab Stock AI Metadata Generator - Content Script Styles */
+/* These styles are injected into the Arab Stock pages */
+
+.arab-stock-ai-fab {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 999999 !important;
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3) !important;
+    animation: arab-stock-ai-pulse 2s infinite !important;
+    transition: all 0.3s ease !important;
+}
+
+.arab-stock-ai-fab:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 30px rgba(102, 126, 234, 0.5) !important;
+}
+
+#arab-stock-ai-trigger {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    padding: 15px 20px !important;
+    border-radius: 50px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    transition: all 0.3s ease !important;
+    white-space: nowrap !important;
+}
+
+#arab-stock-ai-trigger:hover {
+    transform: scale(1.02) !important;
+}
+
+#arab-stock-ai-trigger:active {
+    transform: scale(0.98) !important;
+}
+
+@keyframes arab-stock-ai-pulse {
+    0% { 
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3) !important; 
+    }
+    50% { 
+        box-shadow: 0 4px 30px rgba(102, 126, 234, 0.6) !important; 
+    }
+    100% { 
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3) !important; 
+    }
+}
+
+.arab-stock-ai-notification {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    background: #28a745 !important;
+    color: white !important;
+    padding: 15px 20px !important;
+    border-radius: 10px !important;
+    z-index: 999998 !important;
+    font-weight: bold !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    box-shadow: 0 4px 20px rgba(40, 167, 69, 0.3) !important;
+    animation: arab-stock-ai-slideInRight 0.3s ease !important;
+    max-width: 300px !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+}
+
+.arab-stock-ai-notification.error {
+    background: #dc3545 !important;
+    box-shadow: 0 4px 20px rgba(220, 53, 69, 0.3) !important;
+}
+
+.arab-stock-ai-notification.warning {
+    background: #ffc107 !important;
+    color: #000 !important;
+    box-shadow: 0 4px 20px rgba(255, 193, 7, 0.3) !important;
+}
+
+.arab-stock-ai-notification.info {
+    background: #17a2b8 !important;
+    box-shadow: 0 4px 20px rgba(23, 162, 184, 0.3) !important;
+}
+
+@keyframes arab-stock-ai-slideInRight {
+    from { 
+        transform: translateX(100%) !important; 
+        opacity: 0 !important; 
+    }
+    to { 
+        transform: translateX(0) !important; 
+        opacity: 1 !important; 
+    }
+}
+
+.arab-stock-ai-form-highlight {
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3) !important;
+    border-color: #667eea !important;
+    background: rgba(102, 126, 234, 0.05) !important;
+    animation: arab-stock-ai-highlight 0.5s ease !important;
+}
+
+@keyframes arab-stock-ai-highlight {
+    0% { 
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.5) !important; 
+    }
+    50% { 
+        box-shadow: 0 0 0 6px rgba(102, 126, 234, 0.3) !important; 
+    }
+    100% { 
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3) !important; 
+    }
+}
+
+/* Integration panel styles */
+.arab-stock-ai-panel {
+    position: fixed !important;
+    top: 50% !important;
+    right: 20px !important;
+    transform: translateY(-50%) !important;
+    width: 320px !important;
+    max-height: 500px !important;
+    background: white !important;
+    border-radius: 15px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+    z-index: 999997 !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    overflow: hidden !important;
+    animation: arab-stock-ai-slideInRight 0.3s ease !important;
+}
+
+.arab-stock-ai-panel-header {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    padding: 20px !important;
+    text-align: center !important;
+}
+
+.arab-stock-ai-panel-header h3 {
+    margin: 0 !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+}
+
+.arab-stock-ai-panel-content {
+    padding: 20px !important;
+    max-height: 400px !important;
+    overflow-y: auto !important;
+}
+
+.arab-stock-ai-panel-close {
+    position: absolute !important;
+    top: 10px !important;
+    right: 15px !important;
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.3s ease !important;
+}
+
+.arab-stock-ai-panel-close:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Field detection indicators */
+.arab-stock-ai-field-detected {
+    position: relative !important;
+}
+
+.arab-stock-ai-field-detected::after {
+    content: "🤖" !important;
+    position: absolute !important;
+    right: -25px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 16px !important;
+    opacity: 0.7 !important;
+    pointer-events: none !important;
+}
+
+/* Loading overlay */
+.arab-stock-ai-loading-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(102, 126, 234, 0.8) !important;
+    z-index: 999999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    animation: arab-stock-ai-fadeIn 0.3s ease !important;
+}
+
+.arab-stock-ai-loading-content {
+    text-align: center !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    padding: 40px !important;
+    border-radius: 15px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.arab-stock-ai-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3) !important;
+    border-top: 4px solid white !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    animation: arab-stock-ai-spin 1s linear infinite !important;
+    margin: 0 auto 20px !important;
+}
+
+@keyframes arab-stock-ai-spin {
+    0% { transform: rotate(0deg) !important; }
+    100% { transform: rotate(360deg) !important; }
+}
+
+@keyframes arab-stock-ai-fadeIn {
+    from { opacity: 0 !important; }
+    to { opacity: 1 !important; }
+}
+
+/* Success indicators */
+.arab-stock-ai-success-indicator {
+    position: absolute !important;
+    right: -35px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: #28a745 !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 25px !important;
+    height: 25px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    animation: arab-stock-ai-bounceIn 0.5s ease !important;
+}
+
+@keyframes arab-stock-ai-bounceIn {
+    0% {
+        transform: translateY(-50%) scale(0) !important;
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2) !important;
+    }
+    100% {
+        transform: translateY(-50%) scale(1) !important;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .arab-stock-ai-fab {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    
+    #arab-stock-ai-trigger {
+        padding: 12px 16px !important;
+        font-size: 12px !important;
+    }
+    
+    .arab-stock-ai-panel {
+        width: calc(100vw - 40px) !important;
+        right: 20px !important;
+        left: 20px !important;
+        max-height: 400px !important;
+    }
+    
+    .arab-stock-ai-notification {
+        right: 15px !important;
+        left: 15px !important;
+        max-width: none !important;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .arab-stock-ai-panel {
+        background: #2d3748 !important;
+        color: white !important;
+    }
+    
+    .arab-stock-ai-panel-content {
+        background: #2d3748 !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .arab-stock-ai-fab {
+        border: 2px solid white !important;
+    }
+    
+    .arab-stock-ai-form-highlight {
+        border: 3px solid #667eea !important;
+        box-shadow: none !important;
+    }
+}

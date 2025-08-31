@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arab Stock AI Metadata Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Arab Stock AI</h1>
+            <p>Bilingual Metadata Generator</p>
+        </div>
+
+        <div class="main-content">
+            <!-- AI Configuration -->
+            <div class="section">
+                <h3>🔧 AI Provider</h3>
+                <div class="ai-provider">
+                    <label class="radio-label">
+                        <input type="radio" name="aiProvider" value="openai" checked>
+                        <span>OpenAI GPT-4</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="aiProvider" value="gemini">
+                        <span>Google Gemini</span>
+                    </label>
+                </div>
+                <input type="password" id="apiKey" placeholder="Enter your API Key" class="api-key-input">
+                <small class="help-text">Your API key is stored securely in the browser</small>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="section">
+                <h3>📸 Upload Image</h3>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📁</div>
+                        <p>Drop image here or click to browse</p>
+                        <button class="upload-btn" id="uploadBtn">Choose File</button>
+                    </div>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                    <div id="previewContainer"></div>
+                </div>
+            </div>
+
+            <!-- Form Fields -->
+            <div class="section">
+                <div class="form-group">
+                    <label for="category">📂 Category</label>
+                    <select id="category">
+                        <option value="">Select Category</option>
+                        <option value="people">People & Lifestyle</option>
+                        <option value="business">Business & Finance</option>
+                        <option value="technology">Technology & Innovation</option>
+                        <option value="culture">Culture & Heritage</option>
+                        <option value="architecture">Architecture & Buildings</option>
+                        <option value="nature">Nature & Landscapes</option>
+                        <option value="food">Food & Cuisine</option>
+                        <option value="travel">Travel & Tourism</option>
+                        <option value="education">Education & Learning</option>
+                        <option value="healthcare">Healthcare & Medical</option>
+                        <option value="fashion">Fashion & Beauty</option>
+                        <option value="sports">Sports & Recreation</option>
+                        <option value="religion">Islamic & Religious</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="shopping">Shopping & Retail</option>
+                        <option value="events">Events & Celebrations</option>
+                        <option value="abstract">Abstract & Concepts</option>
+                        <option value="animals">Animals & Pets</option>
+                        <option value="home">Home & Interior</option>
+                        <option value="industrial">Industrial & Manufacturing</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">📝 Description (Optional)</label>
+                    <textarea id="description" placeholder="Brief description of your image..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="mood">🎭 Style/Mood</label>
+                    <select id="mood">
+                        <option value="">Select Style</option>
+                        <option value="professional">Professional</option>
+                        <option value="traditional">Traditional</option>
+                        <option value="modern">Modern</option>
+                        <option value="luxury">Luxury</option>
+                        <option value="casual">Casual</option>
+                        <option value="artistic">Artistic</option>
+                        <option value="documentary">Documentary</option>
+                        <option value="commercial">Commercial</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="btn-group">
+                <button class="btn btn-primary" id="generateBtn">✨ Generate</button>
+                <button class="btn btn-secondary" id="demoBtn">🎯 Demo</button>
+                <button class="btn btn-danger" id="clearBtn">🗑️ Clear</button>
+            </div>
+
+            <!-- Loading -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>AI is generating metadata...</p>
+            </div>
+
+            <!-- Messages -->
+            <div class="message error" id="errorMessage"></div>
+            <div class="message success" id="successMessage"></div>
+
+            <!-- Results -->
+            <div class="results" id="results" style="display: none;">
+                <h3>📊 Generated Results</h3>
+                
+                <!-- Language Tabs -->
+                <div class="language-tabs">
+                    <div class="language-tab active" data-lang="english">🇺🇸 English</div>
+                    <div class="language-tab" data-lang="arabic">🇸🇦 العربية</div>
+                </div>
+
+                <!-- English Results -->
+                <div id="english-content" class="language-content active">
+                    <div class="stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="enTitleCount">0</div>
+                            <div class="stat-label">Title Chars</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="enKeywordCount">0</div>
+                            <div class="stat-label">Keywords</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>🏆 English Title</label>
+                        <div class="input-with-copy">
+                            <input type="text" id="enTitle" readonly>
+                            <button class="copy-btn" data-target="enTitle">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>🔑 English Keywords</label>
+                        <div class="input-with-copy">
+                            <textarea id="enKeywords" readonly></textarea>
+                            <button class="copy-btn" data-target="enKeywords">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>🏷️ English Tags</label>
+                        <div id="enKeywordTags" class="tag-container"></div>
+                    </div>
+                </div>
+
+                <!-- Arabic Results -->
+                <div id="arabic-content" class="language-content">
+                    <div class="stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="arTitleCount">0</div>
+                            <div class="stat-label">عدد أحرف العنوان</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="arKeywordCount">0</div>
+                            <div class="stat-label">الكلمات المفتاحية</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>🏆 العنوان بالعربية</label>
+                        <div class="input-with-copy">
+                            <input type="text" id="arTitle" readonly dir="rtl">
+                            <button class="copy-btn" data-target="arTitle">نسخ</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>🔑 الكلمات المفتاحية بالعربية</label>
+                        <div class="input-with-copy">
+                            <textarea id="arKeywords" readonly dir="rtl"></textarea>
+                            <button class="copy-btn" data-target="arKeywords">نسخ</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>🏷️ العلامات العربية</label>
+                        <div id="arKeywordTags" class="tag-container"></div>
+                    </div>
+                </div>
+
+                <!-- Final Actions -->
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="exportBtn">📥 Export</button>
+                    <button class="btn btn-success" id="autoFillBtn">🚀 Auto Fill</button>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <small>🔥 Shortcuts: Ctrl+G (Generate), Ctrl+1 (English), Ctrl+2 (Arabic)</small>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
